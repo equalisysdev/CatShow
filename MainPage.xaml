@@ -10,6 +10,21 @@
             Padding="30,0"
             VerticalOptions="Center">
 
+            <Picker
+                x:Name="picker"
+                Title="Select a cat type"
+                >
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Normal cat</x:String>
+                        <x:String>Cute cat</x:String>
+                        <x:String>Gif cat</x:String>
+                        <x:String>Cat with a tag</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+
+            </Picker>
+            
             <Button
                 x:Name="CatGenerator"
                 Clicked="CatGenerator_Clicked"
@@ -20,6 +35,8 @@
                 x:Name="CatImage"
                 Aspect="Center"
             ></Image>
+            
+            
 
         </VerticalStackLayout>
     </ScrollView>
