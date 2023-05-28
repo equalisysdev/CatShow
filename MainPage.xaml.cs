@@ -8,6 +8,7 @@ public partial class MainPage : ContentPage
     string tempPath = System.IO.Path.GetTempPath();
     int i = 0;
     string catImagePath;
+    string catImageType = ".jpg";
     string catURL;
 
     public MainPage()
@@ -19,8 +20,15 @@ public partial class MainPage : ContentPage
     {
         using (WebClient client = new WebClient())
         {
-            catImagePath = tempPath + "cat" + i + ".jpg";
-            client.DownloadFile(new Uri(catURL), catImagePath);
+            catImagePath = tempPath + "cat" + i + catImageType;
+            try
+            {
+                client.DownloadFile(new Uri(catURL), catImagePath);
+            }
+            catch (System.Net.WebException NotFoundException)
+            {
+                
+            }
             i++;
 
             CatImage.Source = catImagePath;
@@ -32,11 +40,17 @@ public partial class MainPage : ContentPage
         if (CatTypePicker.SelectedItem != "Cat saying something")
         {
             CatTypeURLChooser();
+            CatText.IsReadOnly = true;
         }
         else
         {
-            
+            CatText.IsReadOnly = false;
         }
+    }
+
+    private void CatText_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        CatTypeURLChooser(CatText.Text);
     }
 
     public void CatTypeURLChooser(string optionalCatText = "")
@@ -45,18 +59,22 @@ public partial class MainPage : ContentPage
         {
             case "Random cat":
                 catURL = "https://cataas.com/cat";
+                catImageType = ".jpg";
                 break;
 
             case "Cute cat":
                 catURL = "https://cataas.com/cat/cute";
+                catImageType = ".jpg";
                 break;
 
             case "Gif cat":
                 catURL = "https://cataas.com/cat/gif";
+                catImageType = ".gif";
                 break;
 
             case "Cat saying something":
                 catURL = $"https://cataas.com/cat/says/{optionalCatText}";
+                catImageType = ".gif";
                 break;
 
             default:

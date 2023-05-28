@@ -30,6 +30,7 @@
                 x:Name="CatText"
                 Placeholder="What does the cat says ?"
                 IsReadOnly="True"
+                TextChanged="CatText_TextChanged"
             ></Entry>
             
             <Button
