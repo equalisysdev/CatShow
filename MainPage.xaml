@@ -11,19 +11,26 @@
             VerticalOptions="Center">
 
             <Picker
-                x:Name="picker"
+                x:Name="CatTypePicker"
                 Title="Select a cat type"
-                >
+                SelectedIndexChanged="CatTypePicker_SelectedIndexChanged">
+                
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
-                        <x:String>Normal cat</x:String>
+                        <x:String>Random cat</x:String>
                         <x:String>Cute cat</x:String>
                         <x:String>Gif cat</x:String>
-                        <x:String>Cat with a tag</x:String>
+                        <x:String>Cat saying something</x:String>
                     </x:Array>
                 </Picker.ItemsSource>
 
             </Picker>
+
+            <Entry
+                x:Name="CatText"
+                Placeholder="What does the cat says ?"
+                IsReadOnly="True"
+            ></Entry>
             
             <Button
                 x:Name="CatGenerator"
