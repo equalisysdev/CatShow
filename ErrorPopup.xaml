@@ -1,0 +1,15 @@
+<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+               x:Class="CatShow.ErrorPopup">
+
+    <VerticalStackLayout
+        Spacing="25"
+        Padding="30,0"
+        BackgroundColor="#080838"
+        HorizontalOptions="Center">
+        <Label Text="oops ! There is an error somewhere !" FontSize="Header"/>
+        <Label Text="That's all we know..." FontSize="Body"/>
+    </VerticalStackLayout>
+
+</toolkit:Popup>

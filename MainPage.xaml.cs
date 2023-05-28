@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using CommunityToolkit.Maui.Views;
+using System.Net;
 using static System.Net.WebRequestMethods;
 
 namespace CatShow;
@@ -10,6 +11,7 @@ public partial class MainPage : ContentPage
     string catImagePath;
     string catImageType = ".jpg";
     string catURL;
+
 
     public MainPage()
     {
@@ -25,9 +27,10 @@ public partial class MainPage : ContentPage
             {
                 client.DownloadFile(new Uri(catURL), catImagePath);
             }
-            catch (System.Net.WebException NotFoundException)
+            catch (Exception)
             {
-                
+                var popup = new ErrorPopup();
+                this.ShowPopup(popup);
             }
             i++;
 
@@ -50,11 +53,13 @@ public partial class MainPage : ContentPage
 
     private void CatText_TextChanged(object sender, TextChangedEventArgs e)
     {
+        var popup = new ErrorPopup();
         CatTypeURLChooser(CatText.Text);
     }
 
     public void CatTypeURLChooser(string optionalCatText = "")
     {
+        var popup = new ErrorPopup();
         switch (CatTypePicker.SelectedItem)
         {
             case "Random cat":
@@ -78,7 +83,7 @@ public partial class MainPage : ContentPage
                 break;
 
             default:
-                catURL = "https://cataas.com/cat";
+                this.ShowPopup(popup);
                 break;
         }
     }
