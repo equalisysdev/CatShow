@@ -40,13 +40,14 @@ public partial class MainPage : ContentPage
 
     private void CatTypePicker_SelectedIndexChanged(object sender, EventArgs e)
     {
-        if (CatTypePicker.SelectedItem != "Cat saying something")
+        if (CatTypePicker.SelectedItem.ToString() != "Cat saying something")
         {
             CatTypeURLChooser();
             CatText.IsReadOnly = true;
+            CatText.Text = "";
         }
         else
-        {
+        {  
             CatText.IsReadOnly = false;
         }
     }
