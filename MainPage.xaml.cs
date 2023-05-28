@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using CommunityToolkit.Maui.Views;
+using System.Net;
 using static System.Net.WebRequestMethods;
 
 namespace CatShow;
@@ -10,6 +11,7 @@ public partial class MainPage : ContentPage
     string catImagePath;
     string catImageType = ".jpg";
     string catURL;
+
 
     public MainPage()
     {
@@ -25,9 +27,13 @@ public partial class MainPage : ContentPage
             {
                 client.DownloadFile(new Uri(catURL), catImagePath);
             }
-            catch (System.Net.WebException NotFoundException)
+            catch (Exception)
             {
+
+                var popup = new ErrorPopup();
+
                 
+
             }
             i++;
 
