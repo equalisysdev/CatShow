@@ -35,6 +35,7 @@ public partial class MainPage : ContentPage
             i++;
 
             CatImage.Source = catImagePath;
+            
         }
     }
 
